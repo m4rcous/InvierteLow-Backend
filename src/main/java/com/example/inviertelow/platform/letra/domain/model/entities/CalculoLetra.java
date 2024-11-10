@@ -1,5 +1,6 @@
 package com.example.inviertelow.platform.letra.domain.model.entities;
 
+import ch.obermuhlner.math.big.BigDecimalMath;
 import com.example.inviertelow.platform.letra.domain.model.aggregates.Letra;
 import com.example.inviertelow.platform.letra.domain.model.valueObjects.PlazoDeTasa;
 import com.example.inviertelow.platform.letra.domain.model.valueObjects.TipoDeTasa;
@@ -163,9 +164,12 @@ public class CalculoLetra extends AuditableModel {
             throw new ArithmeticException("El valor recibido no puede ser cero al calcular la TCEA");
         }
 
-        BigDecimal exponent = BigDecimal.valueOf(360.0 / diasTranscurridos);
-        BigDecimal base = valorEntregar.divide(valorRecibido, MathContext.DECIMAL128);
+        BigDecimal exponent = BigDecimal.valueOf(360.0).divide(BigDecimal.valueOf(diasTranscurridos), MathContext.DECIMAL128);
+        BigDecimal base = valorEntregado.divide(valorRecibido, MathContext.DECIMAL128);
+        BigDecimal potencia = BigDecimalMath.pow(base, exponent, MathContext.DECIMAL128);
 
-        return base.pow(exponent.intValue(), MathContext.DECIMAL128).subtract(BigDecimal.ONE);
+        BigDecimal tcea = potencia.subtract(BigDecimal.ONE);
+
+        return tcea;
     }
 }
