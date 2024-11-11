@@ -72,7 +72,7 @@ public class CalculoLetra extends AuditableModel {
     // Calcular dias transcurridos
     private int calcularNumeroDiasTranscurridos() {
         return (int) ChronoUnit.DAYS.between(
-                letra.getFechaGiro().getFecha(),
+                letra.getFechaDeDescuento().getFecha(),
                 letra.getFechaVencimiento().getFecha()
         );
     }
@@ -92,21 +92,43 @@ public class CalculoLetra extends AuditableModel {
         };
     }
 
+    private int obtenerDiasEnPeriodo(PlazoDeTasa.Plazo frecuenciaCapitalizacion) {
+        return switch (frecuenciaCapitalizacion) {
+            case DIARIO -> 1;
+            case SEMANAL -> 7;
+            case MENSUAL -> 30;
+            case BIMESTRAL -> 60;
+            case TRIMESTRAL -> 90;
+            case SEMESTRAL -> 180;
+            case ANUAL -> 360;
+            default -> throw new IllegalArgumentException("Frecuencia de capitalización no soportada");
+        };
+    }
+
     public BigDecimal calcularTasaEfectivaPeriodo() {
         BigDecimal tasa = letra.getTasa().getValor();
-        int diasTranscurridos = calcularNumeroDiasTranscurridos();
         int diasPorAnio = letra.getDiasPorAnio().getDias();
         TipoDeTasa tipoDeTasa = letra.getTipoDeTasa();
         PlazoDeTasa.Plazo frecuenciaCapitalizacion = letra.getPlazoDeTasa().getPlazo();
 
+        int diasDelPlazo = calcularNumeroDiasTranscurridos();
+        int diasEnPeriodo = obtenerDiasEnPeriodo(frecuenciaCapitalizacion);
+
         BigDecimal tep;
 
         if (tipoDeTasa.getTipo() == TipoDeTasa.Tipo.NOMINAL) {
-            int periodosPorAnio = obtenerPeriodosPorAnio(frecuenciaCapitalizacion);
-            tep = BigDecimal.valueOf(Math.pow(1 + tasa.doubleValue() / periodosPorAnio, (double) diasTranscurridos / (diasPorAnio / periodosPorAnio)) - 1);
+            BigDecimal tasaPeriodo = tasa.divide(BigDecimal.valueOf(diasPorAnio / diasEnPeriodo), MathContext.DECIMAL128);
+            tep = BigDecimal.valueOf(Math.pow(
+                    1 + tasaPeriodo.doubleValue(),
+                    (double) diasDelPlazo / diasEnPeriodo
+            ) - 1);
         } else {
-            tep = BigDecimal.valueOf(Math.pow(1 + tasa.doubleValue(), (double) diasTranscurridos / diasPorAnio) - 1);
+            tep = BigDecimal.valueOf(Math.pow(
+                    1 + tasa.doubleValue(),
+                    (double) diasDelPlazo / diasPorAnio
+            ) - 1);
         }
+
         return tep;
     }
 
