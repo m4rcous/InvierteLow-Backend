@@ -1,9 +1,10 @@
 package com.example.inviertelow.platform.letra.interfaces.rest;
 
-import com.example.inviertelow.platform.letra.domain.model.queries.GetCalculoByLetraIdQuery;
-import com.example.inviertelow.platform.letra.domain.services.CalculoLetraQueryService;
+import com.example.inviertelow.platform.letra.domain.model.queries.calculoLetra.GetCalculoByLetraIdQuery;
+import com.example.inviertelow.platform.letra.domain.services.calculoLetra.CalculoLetraQueryService;
 import com.example.inviertelow.platform.letra.interfaces.rest.resources.CalculoLetraResource;
 import com.example.inviertelow.platform.letra.interfaces.rest.transform.CalculoLetraFromEntityAssembler;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/calculos")
-@Tag(name = "Calculos", description = "bla bla bla bla")
+@RequestMapping("/api/v1/calculo-letra")
+@Tag(name = "Calculo Letras", description = "Operaciones para obtener el cálculo financiero de una letra")
 public class CalculoLetraController {
 
     private final CalculoLetraQueryService calculoLetraQueryService;
@@ -23,6 +24,7 @@ public class CalculoLetraController {
     }
 
     @GetMapping("/letra/{letraId}")
+    @Operation(summary = "Obtener el cálculo de una letra por ID", description = "Recupera los cálculos financieros asociados a una letra utilizando su ID.")
     public ResponseEntity<CalculoLetraResource> getCalculoByLetraId(@PathVariable Long letraId) {
         var query = new GetCalculoByLetraIdQuery(letraId);
         var calculoLetra = calculoLetraQueryService.handle(query);
