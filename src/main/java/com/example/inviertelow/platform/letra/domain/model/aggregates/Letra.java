@@ -6,6 +6,7 @@ import com.example.inviertelow.platform.letra.domain.model.valueObjects.*;
 import com.example.inviertelow.platform.shared.domain.model.aggregates.AuditableAbstractAggregateRoot;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +53,11 @@ public class Letra extends AuditableAbstractAggregateRoot<Letra> {
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "letra", orphanRemoval = true)
     private CalculoLetra calculoLetra;
+
+    @Setter
+    @ManyToOne
+    @JoinColumn(name = "cartera_letra_id", nullable = true)
+    private CarteraLetra carteraLetra;
 
     public Letra(Fecha fechaGiro, Fecha fechaVencimiento, Monto valorNominal, Monto retencion, Tasa tasa, TipoDeTasa tipoDeTasa, DiasPorAnio diasPorAnio, PlazoDeTasa plazoDeTasa, FechaDeDescuento fechaDeDescuento) {
         if (fechaGiro.getFecha().isAfter(fechaVencimiento.getFecha())) {
