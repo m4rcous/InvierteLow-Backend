@@ -1,4 +1,4 @@
-package com.example.inviertelow.platform.letra.domain.model.commands;
+package com.example.inviertelow.platform.letra.domain.model.commands.letra;
 
 import com.example.inviertelow.platform.letra.domain.model.entities.Costo;
 import com.example.inviertelow.platform.letra.domain.model.valueObjects.*;

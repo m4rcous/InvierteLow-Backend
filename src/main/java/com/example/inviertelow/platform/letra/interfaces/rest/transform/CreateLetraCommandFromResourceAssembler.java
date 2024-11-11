@@ -1,6 +1,6 @@
 package com.example.inviertelow.platform.letra.interfaces.rest.transform;
 
-import com.example.inviertelow.platform.letra.domain.model.commands.CreateLetraCommand;
+import com.example.inviertelow.platform.letra.domain.model.commands.letra.CreateLetraCommand;
 import com.example.inviertelow.platform.letra.domain.model.entities.Costo;
 import com.example.inviertelow.platform.letra.interfaces.rest.resources.CostoResource;
 import com.example.inviertelow.platform.letra.interfaces.rest.resources.CreateLetraResource;

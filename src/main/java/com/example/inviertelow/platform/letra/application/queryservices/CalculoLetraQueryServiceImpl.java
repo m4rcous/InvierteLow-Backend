@@ -1,8 +1,8 @@
 package com.example.inviertelow.platform.letra.application.queryservices;
 
 import com.example.inviertelow.platform.letra.domain.model.entities.CalculoLetra;
-import com.example.inviertelow.platform.letra.domain.model.queries.GetCalculoByLetraIdQuery;
-import com.example.inviertelow.platform.letra.domain.services.CalculoLetraQueryService;
+import com.example.inviertelow.platform.letra.domain.model.queries.calculoLetra.GetCalculoByLetraIdQuery;
+import com.example.inviertelow.platform.letra.domain.services.calculoLetra.CalculoLetraQueryService;
 import com.example.inviertelow.platform.letra.infrastructure.persistence.jpa.CalculoLetraRepository;
 import org.springframework.stereotype.Service;
 

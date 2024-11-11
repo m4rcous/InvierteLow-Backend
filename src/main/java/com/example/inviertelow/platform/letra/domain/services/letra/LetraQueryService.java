@@ -1,8 +1,8 @@
-package com.example.inviertelow.platform.letra.domain.services;
+package com.example.inviertelow.platform.letra.domain.services.letra;
 
 import com.example.inviertelow.platform.letra.domain.model.aggregates.Letra;
-import com.example.inviertelow.platform.letra.domain.model.queries.GetAllLetrasQuery;
-import com.example.inviertelow.platform.letra.domain.model.queries.GetLetraByIdQuery;
+import com.example.inviertelow.platform.letra.domain.model.queries.letra.GetAllLetrasQuery;
+import com.example.inviertelow.platform.letra.domain.model.queries.letra.GetLetraByIdQuery;
 
 import java.util.List;
 import java.util.Optional;

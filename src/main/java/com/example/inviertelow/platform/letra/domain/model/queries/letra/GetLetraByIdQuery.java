@@ -1,4 +1,4 @@
-package com.example.inviertelow.platform.letra.domain.model.queries;
+package com.example.inviertelow.platform.letra.domain.model.queries.letra;
 
 public record GetLetraByIdQuery(Long letraId) {
     public GetLetraByIdQuery {

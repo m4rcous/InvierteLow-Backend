@@ -1,9 +1,9 @@
 package com.example.inviertelow.platform.letra.application.commandservices;
 
 import com.example.inviertelow.platform.letra.domain.model.aggregates.Letra;
-import com.example.inviertelow.platform.letra.domain.model.commands.CreateLetraCommand;
+import com.example.inviertelow.platform.letra.domain.model.commands.letra.CreateLetraCommand;
 import com.example.inviertelow.platform.letra.domain.model.entities.CalculoLetra;
-import com.example.inviertelow.platform.letra.domain.services.LetraCommandService;
+import com.example.inviertelow.platform.letra.domain.services.letra.LetraCommandService;
 import com.example.inviertelow.platform.letra.infrastructure.persistence.jpa.CalculoLetraRepository;
 import com.example.inviertelow.platform.letra.infrastructure.persistence.jpa.LetraRepository;
 import org.springframework.stereotype.Service;

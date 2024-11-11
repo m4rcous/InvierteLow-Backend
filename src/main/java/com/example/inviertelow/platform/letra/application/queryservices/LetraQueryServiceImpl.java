@@ -1,9 +1,9 @@
 package com.example.inviertelow.platform.letra.application.queryservices;
 
 import com.example.inviertelow.platform.letra.domain.model.aggregates.Letra;
-import com.example.inviertelow.platform.letra.domain.model.queries.GetAllLetrasQuery;
-import com.example.inviertelow.platform.letra.domain.model.queries.GetLetraByIdQuery;
-import com.example.inviertelow.platform.letra.domain.services.LetraQueryService;
+import com.example.inviertelow.platform.letra.domain.model.queries.letra.GetAllLetrasQuery;
+import com.example.inviertelow.platform.letra.domain.model.queries.letra.GetLetraByIdQuery;
+import com.example.inviertelow.platform.letra.domain.services.letra.LetraQueryService;
 import com.example.inviertelow.platform.letra.infrastructure.persistence.jpa.LetraRepository;
 import org.springframework.stereotype.Service;
 
