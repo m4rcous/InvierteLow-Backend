@@ -22,6 +22,7 @@ import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 @RestController
 @RequestMapping(value = "/api/v1/cartera-letras", produces = APPLICATION_JSON_VALUE)
 @Tag(name = "Cartera Letras", description = "Gestión de carteras de letras, incluyendo la creación y la adición de letras")
+@CrossOrigin(origins = "http://127.0.0.1:5500")
 public class CarteraLetraController {
 
     private final CarteraLetraCommandServiceImpl commandService;

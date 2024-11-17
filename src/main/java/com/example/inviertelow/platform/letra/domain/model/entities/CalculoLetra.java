@@ -77,21 +77,6 @@ public class CalculoLetra extends AuditableModel {
         );
     }
 
-    // Calcular tasa efectiva periodo
-
-    private int obtenerPeriodosPorAnio(PlazoDeTasa.Plazo frecuenciaCapitalizacion) {
-        return switch (frecuenciaCapitalizacion) {
-            case DIARIO -> 360;
-            case SEMANAL -> 52;
-            case MENSUAL -> 12;
-            case BIMESTRAL -> 6;
-            case TRIMESTRAL -> 4;
-            case SEMESTRAL -> 2;
-            case ANUAL -> 1;
-            default -> throw new IllegalArgumentException("Frecuencia de capitalización no soportada");
-        };
-    }
-
     private int obtenerDiasEnPeriodo(PlazoDeTasa.Plazo frecuenciaCapitalizacion) {
         return switch (frecuenciaCapitalizacion) {
             case DIARIO -> 1;

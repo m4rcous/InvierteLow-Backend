@@ -15,6 +15,7 @@ import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 @RestController
 @RequestMapping(value = "/api/v1/calculo-cartera-letras", produces = APPLICATION_JSON_VALUE)
 @Tag(name = "Calculo Cartera Letras", description = "Gestión de cálculos financieros para carteras de letras")
+@CrossOrigin(origins = "http://127.0.0.1:5500")
 public class CalculoCarteraLetraController {
 
     private final CalculoCarteraQueryServiceImpl queryService;

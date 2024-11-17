@@ -24,6 +24,7 @@ import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 @RestController
 @RequestMapping(value = "/api/v1/letras", produces = APPLICATION_JSON_VALUE)
 @Tag(name = "Letras", description = "Operaciones para la creación y consulta de letras financieras")
+@CrossOrigin(origins = "http://127.0.0.1:5500")
 public class LetraController {
 
     private final LetraCommandService letraCommandService;
