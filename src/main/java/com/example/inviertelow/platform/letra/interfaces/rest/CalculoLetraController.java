@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/calculo-letra")
-@CrossOrigin(origins = "http://127.0.0.1:5500")
+@CrossOrigin(origins = "http://localhost:5173")
 @Tag(name = "Calculo Letras", description = "Operaciones para obtener el cálculo financiero de una letra")
 public class CalculoLetraController {
 

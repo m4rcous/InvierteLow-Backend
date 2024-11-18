@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 @Getter
 @Entity
 public class Letra extends AuditableAbstractAggregateRoot<Letra> {
+
     @Embedded
     @AttributeOverride(name = "fecha", column = @Column(name = "fecha_giro"))
     private Fecha fechaGiro;
